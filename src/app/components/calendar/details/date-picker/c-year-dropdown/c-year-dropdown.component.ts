@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-c-month-dropdown',
-  templateUrl: './c-month-dropdown.component.html',
-  styleUrls: ['./c-month-dropdown.component.scss']
+  selector: 'app-c-year-dropdown',
+  templateUrl: './c-year-dropdown.component.html',
+  styleUrls: ['./c-year-dropdown.component.scss']
 })
-export class CMonthDropdownComponent implements OnInit {
+export class CYearDropdownComponent implements OnInit {
 
   isOpen = false;
 
@@ -32,3 +32,5 @@ export interface ICDropdown {
   selected?: boolean;
   today?: boolean;
 }
+
+

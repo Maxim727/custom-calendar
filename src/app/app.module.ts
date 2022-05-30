@@ -32,6 +32,8 @@ import { CalendarWrapperComponent } from './components/calendar/details/calendar
 import { DatePickerComponent } from './components/calendar/details/date-picker/date-picker.component';
 import { YearPickerComponent } from './components/calendar/details/year-picker/year-picker.component';
 import { CMonthDropdownComponent } from './components/calendar/details/date-picker/c-month-dropdown/c-month-dropdown.component';
+import { DatePeriodComponent } from './components/calendar/details/date-period/date-period.component';
+import { CYearDropdownComponent } from './components/calendar/details/date-picker/c-year-dropdown/c-year-dropdown.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -61,7 +63,9 @@ const appRoutes: Routes = [
     CalendarWrapperComponent,
     DatePickerComponent,
     YearPickerComponent,
-    CMonthDropdownComponent
+    CMonthDropdownComponent,
+    DatePeriodComponent,
+    CYearDropdownComponent
   ],
   imports: [
     BrowserModule,

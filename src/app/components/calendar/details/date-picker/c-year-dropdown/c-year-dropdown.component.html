@@ -11,8 +11,9 @@
   <div class="c-list" *ngIf="isOpen">
     <div class="c-list__item"
         *ngFor="let item of list"
+        [class.active]="selectedItem?.id === item?.selected"
         (click)="selectItem(item)">
-      {{item}}
+        {{item?.mDate?.year()}}
     </div>
   </div>
 </div>

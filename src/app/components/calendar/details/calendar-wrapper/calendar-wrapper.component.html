@@ -1,27 +1,30 @@
-<div class="c-wrap">
+<div  [ngClass]="selectedOption?.id === 3 ? 'c-wrap__period' : 'c-wrap'">
   <div class="c-wrap__top">
     <div class="c-wrap__left">
-      <div class="c-wrap__option" 
-           *ngFor="let option of options;" 
-           (click)="selectOption(option)" 
+      <div class="c-wrap__option"
+           *ngFor="let option of options;"
+           (click)="selectOption(option)"
            [class.active]="selectedOption?.id === option.id">
         {{option?.name}}
       </div>
     </div>
     <div class="c-wrap__right">
       <ng-container *ngIf="selectedOption?.id === 1">
-        <app-date-picker></app-date-picker>
+        <app-date-picker (submittedDate)="getDate($event)"></app-date-picker>
       </ng-container>
       <ng-container *ngIf="selectedOption?.id === 2">
-        <app-year-picker></app-year-picker>
+        <app-year-picker (submittedDate)="getDate($event)"></app-year-picker>
+      </ng-container>
+      <ng-container *ngIf="selectedOption?.id === 3" >
+        <app-date-period></app-date-period>
       </ng-container>
     </div>
   </div>
   <div class="c-wrap__bottom">
-    <button class="c-wrap__btn c-wrap__btn__cancel">
+    <button class="c-wrap__btn c-wrap__btn__cancel" (click)="cancelForm()">
       Отмена
     </button>
-    <button class="c-wrap__btn c-wrap__btn__accept">
+    <button class="c-wrap__btn c-wrap__btn__accept" (click)="submitForm()">
       Выбрать
     </button>
   </div>

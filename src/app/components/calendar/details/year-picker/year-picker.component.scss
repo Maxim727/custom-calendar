@@ -1,0 +1,115 @@
+.c-date-picker {
+  display: flex;
+  flex-direction: column;
+  padding: 13px 16px;
+  .c-text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    color: #13AB53;
+    margin-bottom: 4px;
+  }
+  .c-input-wrap {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #13AB53;
+    border-radius: 4px;
+    .c-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 16px;
+      font-size: 16px;
+      line-height: 24px;
+      border-radius: 4px;
+      color: rgba(255, 255, 255, 0.9);
+      background: #262936;
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+
+.c-one-date-picker {
+  display: flex;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 33px;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.week-days {
+  display: flex;
+  .week-day {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #B4B5BD;
+  }
+}
+
+.year-selector{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.box-year{
+  min-width: 93px;
+  min-height: 56px;
+
+  &:hover{
+    cursor: pointer;
+    background: rgba(19, 171, 83, 1);
+    border-radius: 4px;
+  }
+  &.disabled {
+    pointer-events: none;
+    color: #645f5f;
+  }
+  &.selected {
+    color: #fff;
+    border-radius: 4px;
+    background: rgba(19, 171, 83, 1);
+    &:after {
+      background-color: rgba(19, 171, 83, 1);
+
+     // box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.18);
+    }
+    &:hover {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+  &.today {
+    font-weight: bold;
+  }
+  .text{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    line-height: 56px;
+  }
+}
+
+.box-year:hover{
+  cursor: pointer;
+  background: rgba(19, 171, 83, 1);
+  border-radius: 4px;
+}

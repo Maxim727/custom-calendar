@@ -6,13 +6,22 @@
 .c-wrap {
   @include flex-dir-col;
   width: 487px;
-  max-width: 816px;
+  max-width: 819px;
   height: 490px;
   max-height: 574px;
   background: #262936;
   box-shadow: -6px -6px 24px rgba(30, 34, 48, 0.48), 8px 8px 22px rgba(30, 34, 48, 0.24), inset 1px 1px 1px rgba(30, 34, 48, 0.05), inset -1px -1px 4px rgba(30, 34, 48, 0.12);
   border-radius: 12px;
   color: #fff;
+
+  &__period{
+    @include flex-dir-col;
+    width: 835px;
+    background: #262936;
+    box-shadow: -6px -6px 24px rgb(30 34 48 / 48%), 8px 8px 22px rgb(30 34 48 / 24%), inset 1px 1px 1px rgb(30 34 48 / 5%), inset -1px -1px 4px rgb(30 34 48 / 12%);
+    border-radius: 12px;
+    color: #fff;
+  }
   &__top {
     display: flex;
     border-bottom: 1px solid #53586D;
@@ -27,7 +36,7 @@
   }
   &__left {
     @include flex-dir-col;
-    width: 160px;
+    min-width: 160px;
     border-right: 1px solid #53586D;
     padding: 24px 0;
   }

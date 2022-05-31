@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import * as _ from 'lodash'
 import { ICDropdown } from './c-month-dropdown/c-month-dropdown.component';
@@ -20,8 +20,9 @@ export class DatePickerComponent implements OnInit {
   curYear: any;
 
   @ViewChild('calendar', { static: true }) calendar: any;
-
   @Output() submittedDate = new EventEmitter();
+  @Input() month: any;
+  @Input() year: any;
 
   constructor() { }
 
@@ -29,6 +30,9 @@ export class DatePickerComponent implements OnInit {
     this.currentDate = moment();
     this.selectedDate = moment(this.currentDate).format('DD.MM.YYYY');
     this.generateCalendar();
+
+    this.curYear = moment(this.currentDate).format('DD.MM.YYYY').slice(6,10);
+
     this.years = this.getYears(this.currentDate)
     this.monthes = this.getMonthes(this.currentDate)
   }
@@ -78,8 +82,7 @@ export class DatePickerComponent implements OnInit {
 
 
   private getMonthes(currentMoment: moment.Moment) {
-    console.warn(moment.months());
-
+   // console.warn(moment.months());
     return moment.months()
     // let substracted = moment(currentMoment).subtract(11, 'year')
     // let added = moment(currentMoment).add(12, 'year')
@@ -94,6 +97,15 @@ export class DatePickerComponent implements OnInit {
     //   };
     // });
   }
+
+  // receiveSelectedYear($event: any) {
+  //   //console.log($event);
+
+  //   this.curYear = $event?.mDate?.format('YYYY')
+  //   console.log(this.curYear, 'curYear');
+
+
+  // }
 
   private isToday(date: moment.Moment): boolean {
     return moment().isSame(moment(date), 'day');
@@ -128,16 +140,11 @@ export class DatePickerComponent implements OnInit {
     this.selectedDate = moment(date.mDate).format('DD.MM.YYYY');
     this.generateCalendar();
     this.submittedDate.emit(this.selectedDate)
-    this.curMonth;
-    this.curYear;
-
 
     //this.currentDate = this.curYear?.mDate
-
-
-    console.warn(this.currentDate, 'curDate')
-    console.warn(this.curMonth, 'curMonth');
-    console.warn(this.curYear?.mDate), 'curYear';
+    // console.warn(this.currentDate, 'curDate')
+    // console.warn(this.curMonth, 'curMonth');
+    // console.warn(this.curYear?.mDate), 'curYear';
 
   }
 

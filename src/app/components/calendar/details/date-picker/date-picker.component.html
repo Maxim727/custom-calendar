@@ -3,7 +3,6 @@
   <div class="c-input-wrap">
     <input type="text" class="c-input" [(ngModel)]="selectedDate">
   </div>
-
   <div class="c-one-date-picker">
     <div class="c-one-date-picker__header">
       <div class="c-to-left"  (click)="prevMonth()" style="cursor: pointer; ">
@@ -13,7 +12,8 @@
       </div>
       {{currentDate.format('MMMM').toUpperCase()}}
       <app-c-month-dropdown [list]="monthes" [(selectedItem)]="curMonth"></app-c-month-dropdown>
-      {{currentDate.format('YYYY')}}
+      <!-- {{curYear?.mDate.format('YYYY') }} -->
+      {{curYear}}
       <app-c-year-dropdown [list]="years" [(selectedItem)]="curYear"></app-c-year-dropdown>
       <div class="c-to-right" style="cursor: pointer;" (click)="nextMonth()">
         <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">

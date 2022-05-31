@@ -8,6 +8,11 @@ export interface CalendarDate {
   today?: boolean;
 }
 
+export interface SubmitDate {
+  start?: string;
+  end?: string;
+}
+
 @Component({
   selector: 'app-year-picker',
   templateUrl: './year-picker.component.html',
@@ -17,19 +22,16 @@ export class YearPickerComponent implements OnInit {
   selectedDate: any;
   years: any[] = [];
   currentDate!: moment.Moment;
+  submittingDate: any[] = [];
 
   @Output() submittedDate = new EventEmitter();
-  submitDate() { this.submittedDate.emit(this.selectedDate); }
+  submitDate() { this.submittedDate.emit(this.submittingDate); }
 
   constructor() { }
 
   ngOnInit(): void {
     this.currentDate = moment();
-    console.log(this.selectedDate);
-
     this.selectedDate = moment(this.currentDate).format('YYYY');
-    console.log(this.selectedDate);
-
     this.generateCalendar()
   }
 
@@ -62,6 +64,14 @@ export class YearPickerComponent implements OnInit {
 
   public selectDate(date: CalendarDate) {
     this.selectedDate = moment(date.mDate).format('YYYY');
+    let start
+    let end
+
+    this.submittingDate = [
+      start = new Date(this.selectedDate, 0, 2).toISOString().slice(0, 10),
+      end = new Date(this.selectedDate, 11, 32).toISOString().slice(0, 10)
+    ]
+
     this.generateCalendar();
     this.submitDate()
   }

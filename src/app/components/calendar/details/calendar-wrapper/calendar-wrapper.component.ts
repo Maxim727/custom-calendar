@@ -25,7 +25,6 @@ export class CalendarWrapperComponent implements OnInit {
 
   selectOption(option: MyOption) {
     this.selectedOption = option;
-
     switch (this.selectedOption.id) {
       case 1:
         this.dateToSubmit = moment(this.currentDate).format('DD.MM.YYYY');

@@ -6,12 +6,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./c-month-dropdown.component.scss']
 })
 export class CMonthDropdownComponent implements OnInit {
-
   isOpen = false;
 
-  @Input() list: ICDropdown[] = [];
-
+  @Input() list: any[] = [];
   @Input() selectedItem: any;
+
   @Output() selectedItemChange = new EventEmitter<ICDropdown>();
 
   constructor() { }
@@ -20,9 +19,9 @@ export class CMonthDropdownComponent implements OnInit {
   }
 
   selectItem(item: ICDropdown) {
-    console.log(item);
+    //console.log(item);
     this.selectedItem = item;
-    this.selectedItemChange.emit(item);
+    this.selectedItemChange.emit(this.selectedItem);
     this.isOpen = false;
   }
 }

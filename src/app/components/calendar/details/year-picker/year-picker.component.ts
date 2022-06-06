@@ -23,6 +23,8 @@ export class YearPickerComponent implements OnInit {
   years: any[] = [];
   currentDate!: moment.Moment;
   submittingDate: any[] = [];
+  start!: string;
+  end!: string;
 
   @Output() submittedDate = new EventEmitter();
   submitDate() { this.submittedDate.emit(this.submittingDate); }
@@ -33,6 +35,11 @@ export class YearPickerComponent implements OnInit {
     this.currentDate = moment();
     this.selectedDate = moment(this.currentDate).format('YYYY');
     this.generateCalendar()
+
+    this.submittingDate = [
+      this.start = new Date(this.selectedDate, 0, 2).toISOString().slice(0, 10),
+      this.end = new Date(this.selectedDate, 11, 32).toISOString().slice(0, 10)
+    ]
   }
 
   private generateCalendar(): void {
@@ -64,12 +71,10 @@ export class YearPickerComponent implements OnInit {
 
   public selectDate(date: CalendarDate) {
     this.selectedDate = moment(date.mDate).format('YYYY');
-    let start
-    let end
 
     this.submittingDate = [
-      start = new Date(this.selectedDate, 0, 2).toISOString().slice(0, 10),
-      end = new Date(this.selectedDate, 11, 32).toISOString().slice(0, 10)
+      this.start = new Date(this.selectedDate, 0, 2).toISOString().slice(0, 10),
+      this.end = new Date(this.selectedDate, 11, 32).toISOString().slice(0, 10)
     ]
 
     this.generateCalendar();

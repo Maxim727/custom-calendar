@@ -37,8 +37,8 @@ export class YearPickerComponent implements OnInit {
     this.generateCalendar()
 
     this.submittingDate = [
-      this.start = new Date(this.selectedDate, 0, 2).toISOString().slice(0, 10),
-      this.end = new Date(this.selectedDate, 11, 32).toISOString().slice(0, 10)
+      this.start = '01-01-'+moment(this.currentDate).format('YYYY'),
+      this.end = '31-12-'+moment(this.currentDate).format('YYYY')
     ]
   }
 
@@ -73,8 +73,8 @@ export class YearPickerComponent implements OnInit {
     this.selectedDate = moment(date.mDate).format('YYYY');
 
     this.submittingDate = [
-      this.start = new Date(this.selectedDate, 0, 2).toISOString().slice(0, 10),
-      this.end = new Date(this.selectedDate, 11, 32).toISOString().slice(0, 10)
+      this.start = '01-01-'+moment(date.mDate).format('YYYY'),
+      this.end = '31-12-'+moment(date.mDate).format('YYYY')
     ]
 
     this.generateCalendar();

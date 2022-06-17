@@ -10,13 +10,13 @@
     </div>
     <div class="c-wrap__right">
       <ng-container *ngIf="selectedOption?.id === 1">
-        <app-date-picker (submittedDate)="getDate($event)"></app-date-picker>
+        <app-date-picker  (submittedDate)="getDate($event)"></app-date-picker>
       </ng-container>
       <ng-container *ngIf="selectedOption?.id === 2">
         <app-year-picker (submittedDate)="getDate($event)"></app-year-picker>
       </ng-container>
       <ng-container *ngIf="selectedOption?.id === 3" >
-        <app-date-period></app-date-period>
+        <app-date-period (submittedDate)="getDatePeriod($event)"></app-date-period>
       </ng-container>
     </div>
   </div>

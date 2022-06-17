@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import * as _ from 'lodash'
-import { ICDropdown } from './c-month-dropdown/c-month-dropdown.component';
+
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
@@ -20,6 +20,7 @@ export class DatePickerComponent implements OnInit {
   selectedYear: any;
   substracted!: moment.Moment;
 
+  @Input() setDate: any;
   @ViewChild('calendar', { static: true }) calendar: any;
   @Output() submittedDate = new EventEmitter();
   @Input() month: any;
@@ -30,18 +31,20 @@ export class DatePickerComponent implements OnInit {
   ngOnInit(): void {
     this.currentDate = moment();
 
-    this.selectedDate = moment(this.currentDate).format('DD.MM.YYYY');
+    //this.setDate = moment(this.setDate).format('DD.MM.YYYY')
+
+    this.selectedDate = moment(this.setDate).format('DD.MM.YYYY');
     this.generateCalendar();
 
     this.selectedYear = this.selectedDate.slice(6, 10);
-    this.selectedMonth = moment(this.currentDate);
+    this.selectedMonth = moment(this.setDate);
 
     this.years = this.getYears(this.currentDate)
     this.monthes = this.getMonthes()
   }
 
   generateCalendar(): void {
-    const dates = this.fillDates(this.currentDate);
+    const dates = this.fillDates(this.setDate);
     const weeks = [];
     while (dates.length > 0) {
       weeks.push(dates.splice(0, 7));
@@ -54,13 +57,13 @@ export class DatePickerComponent implements OnInit {
     const lastOfMonth = moment(currentMoment).endOf('month').day();
 
     const firstDayOfGrid = moment(currentMoment).startOf('month').subtract(firstOfMonth, 'days').add(1, 'days');
-    console.log(firstDayOfGrid, 'firstDayOfGrid');
+    //console.log(firstDayOfGrid, 'firstDayOfGrid');
 
     const lastDayOfGrid = moment(currentMoment).endOf('month').subtract(lastOfMonth, 'days').add(8, 'days');
-    console.log(lastDayOfGrid, 'lastDayOfGrid')
+    //console.log(lastDayOfGrid, 'lastDayOfGrid')
 
     const startCalendar = firstDayOfGrid.date();
-    console.log(startCalendar, 'startCalendar')
+    //console.log(startCalendar, 'startCalendar')
 
     return _.range(startCalendar, startCalendar + lastDayOfGrid.diff(firstDayOfGrid, 'days')).map((date) => {
       const newDate = moment(firstDayOfGrid).date(date);
@@ -77,8 +80,8 @@ export class DatePickerComponent implements OnInit {
     let added = moment(currentMoment).add(12, 'year')
     const starter = substracted.year()
 
-    return _.range(starter, starter + added.diff(this.currentDate, 'year')).map((date) => {
-      const newDate = moment(this.currentDate).year(date);
+    return _.range(starter, starter + added.diff(this.setDate, 'year')).map((date) => {
+      const newDate = moment(this.setDate).year(date);
       return {
         today: this.isToday(newDate),
         selected: this.isSelected(newDate),
@@ -100,14 +103,14 @@ export class DatePickerComponent implements OnInit {
   }
 
   prevMonth(): void {
-    this.selectedMonth = moment(this.currentDate).subtract(1, 'months');
-    this.currentDate = moment(this.currentDate).subtract(1, 'months');
+    this.selectedMonth = moment(this.setDate).subtract(1, 'months');
+    this.setDate = moment(this.setDate).subtract(1, 'months');
     this.generateCalendar();
   }
 
   nextMonth(): void {
-    this.selectedMonth = moment(this.currentDate).add(1, 'months');
-    this.currentDate = moment(this.currentDate).add(1, 'months');
+    this.selectedMonth = moment(this.setDate).add(1, 'months');
+    this.setDate = moment(this.setDate).add(1, 'months');
     this.generateCalendar();
   }
 
@@ -118,7 +121,7 @@ export class DatePickerComponent implements OnInit {
 
   isSelectedMonth(date: moment.Moment): boolean {
     const today = moment();
-    return moment(date).isSame(this.currentDate, 'month') ;
+    return moment(date).isSame(this.setDate, 'month') ;
     //return moment(date).isSame(this.currentDate, 'month') && moment(date).isSameOrBefore(today);
   }
 
@@ -137,9 +140,9 @@ export class DatePickerComponent implements OnInit {
   receiveSelectedYear($event: any) {
     this.selectedYear = $event;
     //getting the current year
-    let varY: any = this.currentDate.format('YYYY')
+    let varY: any = this.setDate.format('YYYY')
     //getting the chosen year
-    this.currentDate = moment(this.currentDate).subtract((varY) - this.selectedYear, 'year')
+    this.setDate = moment(this.setDate).subtract((varY) - this.selectedYear, 'year')
     this.selectedDate = this.selectedDate.slice(0, -4) + this.selectedYear;
     this.submittedDate.emit(this.selectedDate)
     this.generateCalendar()
@@ -147,11 +150,11 @@ export class DatePickerComponent implements OnInit {
 
   receiveSelectedMonth($event: any) {
     this.selectedMonth = $event
-    this.currentDate = this.selectedMonth
+    this.setDate = this.selectedMonth
     this.selectedDate = this.selectedDate.slice(0, 3) + $event.format('MM') + '.'+ this.selectedYear
-    let varY: any = this.currentDate.format('YYYY')
+    let varY: any = this.setDate.format('YYYY')
     //getting the chosen year
-    this.currentDate = moment(this.currentDate).subtract((varY) - this.selectedYear, 'year')
+    this.setDate = moment(this.setDate).subtract((varY) - this.selectedYear, 'year')
     this.submittedDate.emit(this.selectedDate)
     this.generateCalendar()
   }

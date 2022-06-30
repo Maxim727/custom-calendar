@@ -33,15 +33,4 @@
     </div>
   </div>
 </div>
-<!-- <div class="c-wrap">
-  <div class="display-method">
-    <p class="c-text">Выберите способ отображения</p>
-    <div class="btn">
-      <button class="btn-wrap">День</button>
-      <button class="btn-wrap">Месяц</button>
-      <button class="btn-wrap">Год</button>
-    </div>
-  </div>
-</div> -->
-
-<app-date-format></app-date-format>
+<app-date-format  (selectedItemChange)="receiveSelectedFormat($event)"></app-date-format>

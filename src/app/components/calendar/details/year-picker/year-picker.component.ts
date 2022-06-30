@@ -25,6 +25,8 @@ export class YearPickerComponent implements OnInit {
   submittingDate: any[] = [];
   start!: string;
   end!: string;
+  dateFormat: any;
+  format: any;
 
   @Output() submittedDate = new EventEmitter();
   submitDate() { this.submittedDate.emit(this.submittingDate); }
@@ -38,7 +40,8 @@ export class YearPickerComponent implements OnInit {
 
     this.submittingDate = [
       this.start = '01-01-'+moment(this.currentDate).format('YYYY'),
-      this.end = '31-12-'+moment(this.currentDate).format('YYYY')
+      this.end = '31-12-'+moment(this.currentDate).format('YYYY'),
+      this.dateFormat
     ]
   }
 
@@ -74,7 +77,8 @@ export class YearPickerComponent implements OnInit {
 
     this.submittingDate = [
       this.start = '01-01-'+moment(date.mDate).format('YYYY'),
-      this.end = '31-12-'+moment(date.mDate).format('YYYY')
+      this.end = '31-12-'+moment(date.mDate).format('YYYY'),
+      this.dateFormat
     ]
 
     this.generateCalendar();
@@ -89,5 +93,9 @@ export class YearPickerComponent implements OnInit {
   public prevYear(): void {
     this.currentDate = moment(this.currentDate).subtract(12, 'year')
     this.generateCalendar()
+  }
+
+  receiveSelectedFormat($event: any){
+    this.dateFormat = $event;
   }
 }

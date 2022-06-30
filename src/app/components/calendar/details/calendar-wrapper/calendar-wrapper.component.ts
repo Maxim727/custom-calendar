@@ -32,7 +32,7 @@ export class CalendarWrapperComponent implements OnInit {
         this.dateToSubmit = moment(this.currentDate).format('DD.MM.YYYY');
         break
       case 2:
-        this.dateToSubmit = ['01-01-'+moment(this.currentDate).format('YYYY'), '31-12-'+moment(this.currentDate).format('YYYY')]
+        this.dateToSubmit = ['01-01-'+moment(this.currentDate).format('YYYY'), '31-12-'+moment(this.currentDate).format('YYYY'), {id: 1, name: 'День'}]
         break
       case 3:
         this.dateToSubmit = [moment(this.currentDate).subtract(1, 'month').format('DD.MM.YYYY'), moment(this.currentDate).format('DD.MM.YYYY')]
@@ -41,24 +41,25 @@ export class CalendarWrapperComponent implements OnInit {
   }
 
   getDate($event: any) {
+    console.log($event);
+
     this.dateToSubmit = $event
   }
 
   getDatePeriod($event: any){
+    console.log($event);
+
     this.dateToSubmit = $event
   }
 
   submitForm() {
     console.warn(this.dateToSubmit, 'submit')
-    this.dialog.closeAll(
-
-      );
+    this.dialog.closeAll();
   }
 
   cancelForm() {
     console.warn('Cancel')
-    this.dialog.closeAll(
-    );
+    this.dialog.closeAll();
   }
 }
 

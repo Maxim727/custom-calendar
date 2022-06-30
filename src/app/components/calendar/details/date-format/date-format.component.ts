@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-date-format',
@@ -9,7 +9,12 @@ export class DateFormatComponent implements OnInit {
 
   constructor() { }
 
-  formats = [
+  @Input() list: any[] = [];
+  @Input() selectedItem: any;
+
+  @Output() selectedItemChange = new EventEmitter();
+
+   formats = [
     { id: 1, name: 'День' },
     { id: 2, name: 'Месяц' },
     { id: 3, name: 'Год' },
@@ -17,6 +22,11 @@ export class DateFormatComponent implements OnInit {
 
   selectedFormat: MyFormat = this.formats[0];
   ngOnInit(): void {
+  }
+
+  selectItem(item: any) {
+    this.selectedItem = item;
+    this.selectedItemChange.emit(this.selectedItem);
   }
 
   selectFormat(format: MyFormat){

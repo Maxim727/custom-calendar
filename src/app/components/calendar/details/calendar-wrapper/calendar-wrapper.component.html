@@ -1,4 +1,5 @@
-<div  [ngClass]="selectedOption?.id === 3 ? 'c-wrap__period' : 'c-wrap'">
+<!-- <div  [ngClass]="selectedOption?.id === 3 ? 'c-wrap__period' : 'c-wrap'"> -->
+<div  [ngClass]="{'c-wrap': selectedOption?.id === 1, 'c-wrap__year': selectedOption?.id === 2, 'c-wrap__period': selectedOption?.id === 3}">
   <div class="c-wrap__top">
     <div class="c-wrap__left">
       <div class="c-wrap__option"

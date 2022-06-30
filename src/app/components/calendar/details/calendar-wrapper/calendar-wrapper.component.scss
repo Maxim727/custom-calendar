@@ -8,15 +8,28 @@
   width: 487px;
   max-width: 819px;
   height: 490px;
-  max-height: 574px;
+  max-height: 774px;
   background: #262936;
   box-shadow: -6px -6px 24px rgba(30, 34, 48, 0.48), 8px 8px 22px rgba(30, 34, 48, 0.24), inset 1px 1px 1px rgba(30, 34, 48, 0.05), inset -1px -1px 4px rgba(30, 34, 48, 0.12);
   border-radius: 12px;
   color: #fff;
 
+  &__year{
+
+    @include flex-dir-col;
+    width: 487px;
+    max-width: 819px;
+    height: 550px;
+    max-height: 774px;
+    background: #262936;
+    box-shadow: -6px -6px 24px rgba(30, 34, 48, 0.48), 8px 8px 22px rgba(30, 34, 48, 0.24), inset 1px 1px 1px rgba(30, 34, 48, 0.05), inset -1px -1px 4px rgba(30, 34, 48, 0.12);
+    border-radius: 12px;
+    color: #fff;
+  }
   &__period{
     @include flex-dir-col;
     width: 835px;
+    height: 580px;
     background: #262936;
     box-shadow: -6px -6px 24px rgb(30 34 48 / 48%), 8px 8px 22px rgb(30 34 48 / 24%), inset 1px 1px 1px rgb(30 34 48 / 5%), inset -1px -1px 4px rgb(30 34 48 / 12%);
     border-radius: 12px;
@@ -62,7 +75,7 @@
   }
   &__btn {
     margin-left: 24px;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;

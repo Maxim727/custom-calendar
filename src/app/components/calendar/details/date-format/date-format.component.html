@@ -1,0 +1,17 @@
+<div class="c-wrap">
+  <div class="display-method">
+    <p class="c-text">Выберите способ отображения</p>
+    <div class="btn">
+      <button
+        class="btn-wrap"
+        *ngFor="let format of formats"
+        (click)="selectFormat(format)"
+        [class.active]="selectedFormat?.id === format.id"
+      >
+        {{ format?.name }}
+      </button>
+      <!-- <button class="btn-wrap">Месяц</button>
+      <button class="btn-wrap">Год</button> -->
+    </div>
+  </div>
+</div>

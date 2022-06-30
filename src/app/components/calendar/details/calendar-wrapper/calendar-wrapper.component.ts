@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +18,7 @@ export class CalendarWrapperComponent implements OnInit {
 
   public currentDate!: moment.Moment;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.dateToSubmit = moment(this.currentDate).format('DD.MM.YYYY');
@@ -48,11 +49,16 @@ export class CalendarWrapperComponent implements OnInit {
   }
 
   submitForm() {
-    //console.warn(this.dateToSubmit, 'submit')
+    console.warn(this.dateToSubmit, 'submit')
+    this.dialog.closeAll(
+
+      );
   }
 
   cancelForm() {
     console.warn('Cancel')
+    this.dialog.closeAll(
+    );
   }
 }
 

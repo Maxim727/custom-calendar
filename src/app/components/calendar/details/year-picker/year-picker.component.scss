@@ -2,17 +2,18 @@
   display: flex;
   flex-direction: column;
   padding: 13px 16px;
+  padding-bottom: 0px;
   .c-text {
     font-weight: 600;
     font-size: 12px;
     line-height: 20px;
-    color: #13AB53;
+    color: #13ab53;
     margin-bottom: 4px;
   }
   .c-input-wrap {
-    width: 100%;
+    width: 278px;
     height: 40px;
-    border: 2px solid #13AB53;
+    border: 2px solid #13ab53;
     border-radius: 4px;
     .c-input {
       width: 100%;
@@ -28,7 +29,6 @@
     }
   }
 }
-
 
 .c-one-date-picker {
   display: flex;
@@ -57,11 +57,11 @@
     font-size: 12px;
     line-height: 20px;
     text-transform: uppercase;
-    color: #B4B5BD;
+    color: #b4b5bd;
   }
 }
 
-.year-selector{
+.year-selector {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -69,11 +69,11 @@
   gap: 8px;
 }
 
-.box-year{
+.box-year {
   min-width: 93px;
   min-height: 56px;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     background: rgba(19, 171, 83, 1);
     border-radius: 4px;
@@ -89,7 +89,7 @@
     &:after {
       background-color: rgba(19, 171, 83, 1);
 
-     // box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.18);
+      // box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.18);
     }
     &:hover {
       &:after {
@@ -100,7 +100,7 @@
   &.today {
     font-weight: bold;
   }
-  .text{
+  .text {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -108,8 +108,52 @@
   }
 }
 
-.box-year:hover{
+.box-year:hover {
   cursor: pointer;
   background: rgba(19, 171, 83, 1);
   border-radius: 4px;
+}
+
+.display-method {
+  display: flex;
+  flex-direction: column;
+  padding: 13px 16px;
+  .c-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #b4b5bd;
+    margin-bottom: 4px;
+  }
+}
+.btn {
+  gap: 24px;
+  display: flex;
+  .btn-wrap {
+    border: 1px solid #53586d;
+    border-radius: 4px;
+    width: 78px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    background: none;
+    height: 40px;
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+      background: rgba(19, 171, 83, 1);
+      border-radius: 4px;
+    }
+  }
+}
+.c-wrap {
+  //background: #262936;
+  color: #fff;
+  border-top: 1px solid #53586d;
+  margin-top: 5px;
+
 }

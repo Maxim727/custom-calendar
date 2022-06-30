@@ -1,7 +1,10 @@
-.date-period-wrapper{
-    display: flex;
-}
+.c-wrap {
+  //background: #262936;
+  color: #fff;
+  border-top: 1px solid #53586d;
+  margin-top: 5px;
 
+}
 
 .display-method {
   display: flex;
@@ -37,12 +40,9 @@
       background: rgba(19, 171, 83, 1);
       border-radius: 4px;
     }
+    &.active {
+      background: rgba(19, 171, 83, 1);
+    }
   }
 }
-.c-wrap {
-  //background: #262936;
-  color: #fff;
-  border-top: 1px solid #53586d;
-  margin-top: 5px;
 
-}

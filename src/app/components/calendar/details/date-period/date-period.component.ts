@@ -32,7 +32,7 @@ export class DatePeriodComponent implements OnInit {
     this.submitDate()
   }
 
-
+//
 }
 interface DatePeriod {
   start: number;
